@@ -10,7 +10,9 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
+
+
 
 // In-memory stores
 let questions = [];
@@ -82,6 +84,4 @@ app.get("/api/stream", (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
-});
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
